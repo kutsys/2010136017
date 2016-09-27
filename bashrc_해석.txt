@@ -7,30 +7,30 @@ case $- in
     *i*) ;;
       *) return;;
 esac
-#-변수에 들어있는 값을 참조하여 케이스문
+# -변수에 들어있는 값을 참조하여 케이스문
 
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-#변수에 값 대입
+# 변수에 값 대입
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-#shopt란 프로그램에 -s histappend 옵션을 주고 실행
-#shell options 란 프로그램으로 쉘에 histappend 옵션을 적용하는구문
-#histappend 는 command history 적용하는 옵션
+# shopt란 프로그램에 -s histappend 옵션을 주고 실행
+# shell options 란 프로그램으로 쉘에 histappend 옵션을 적용하는구문
+# histappend 는 command history 적용하는 옵션
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-#변수에 값 대입
+# 변수에 값 대입
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-#shopt 프로그램에 -s checkwinsize 옵션을 주고 실행
-#해당 옵션은 윈도우사이즈를 확인하고 개행시켜주는 옵션
+# shopt 프로그램에 -s checkwinsize 옵션을 주고 실행
+# 해당 옵션은 윈도우사이즈를 확인하고 개행시켜주는 옵션
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -45,14 +45,14 @@ shopt -s checkwinsize
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-#debian_chroot 문자가 비어있고 /etc/debian_chroot 파일이 존재하고 읽을수 있으면
-#debian_chroot 에 /etc/debian_chroot 파일 내용을 대입
+# debian_chroot 문자가 비어있고 /etc/debian_chroot 파일이 존재하고 읽을수 있으면
+# debian_chroot 에 /etc/debian_chroot 파일 내용을 대입
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
-#TERM변수가 케이스문을 만족하면 color_prompt에 yes를 대입
+# TERM변수가 케이스문을 만족하면 color_prompt에 yes를 대입
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -69,7 +69,7 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-#force_color_prompt 문자열이 존재하고
+# force_color_prompt 문자열이 존재하고
 # /usr/bin/tput 파일이 존재하면서 실행가능하며 tput setaf 1 을 실행한 결과를 
 # /dev/null에 리다이렉션하는데 성공하면 color_prompt에 yes대입
 # 아니면 color_prompt에 널 대입(비우기)
@@ -92,7 +92,7 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-#TERM 변수(터미널 이름)를 보고 터미널이 xterm이나 rxvt면 쉘 프롬프트를 해당 모양으로 변경
+# TERM 변수(터미널 이름)를 보고 터미널이 xterm이나 rxvt면 쉘 프롬프트를 해당 모양으로 변경
 #
 
 # enable color support of ls and also add handy aliases
