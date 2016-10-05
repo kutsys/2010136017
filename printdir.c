@@ -18,7 +18,7 @@ void printdir(char *dir, int depth) {
 	while ((entry = readdir(dp)) != NULL) {
 		//읽은 엔트리의 상태를 확인하는 함수
 		lstat(entry->d_name, &statbuf);
-		//해당 엔트리가 디렉토리도 아니고 히든파일도 아닐경우 종료
+		//해당 엔트리가 디렉토리도 아니고 히든파일도 아닐경우 출력
 		if (!S_ISDIR(statbuf.st_mode) && entry->d_name[0] !='.') {
 			printf("%s\n",entry->d_name);
 		}
