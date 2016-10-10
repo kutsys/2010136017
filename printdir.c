@@ -12,17 +12,27 @@ void printdir(char *dir, int depth) {
 		fprintf(stderr, "cannot open directory : %s\n", dir);
 		return;
 	}
-	//현재 프로세스의 작업 경로를 dir로 변경
+	//현 프로세스의 작업 디렉토리를 dir로 변경
 	chdir(dir);
-	//입력받은 디렉토리의 내용이 끝날때까지 반복
+	//현 디렉토리의 내용이 끝날때까지 반복
 	while ((entry = readdir(dp)) != NULL) {
-		//읽은 엔트리의 상태를 확인하는 함수
+		//읽은 엔트리의 상태를 확인하는 펑션
 		lstat(entry->d_name, &statbuf);
-		//해당 엔트리가 디렉토리도 아니고 히든파일도 아닐경우 출력
-		if (!S_ISDIR(statbuf.st_mode) && entry->d_name[0] !='.') {
-			printf("%s\n",entry->d_name);
+		//히든 폴더 혹은 파일이거나 상위폴더를 가르키는 파일은 무시
+		if(entry->d_name[0]=='.'){	continue;	}	
+		//디렉토리인지 확인 파일이면 출력
+		if (S_ISDIR(statbuf.st_mode)) {
+			//파일명 + / 로 사용자가 디렉토리 구분을 하게 해주고
+			//depth로 칸을 띄어 구분을 지어준다
+			printf("%*s%s / \n", depth, "", entry->d_name);
+			//디렉토리면 하위 내용이 있기에 해당 펑션을 재호출하여 재귀처리
+			printdir(entry->d_name, depth + 4);
+		}
+		else {
+			printf("%*s%s\n", depth, "", entry->d_name);
 		}
 	}
+	chdir("..");
 	closedir(dp);
 }
 int main() {
