@@ -6,5 +6,4 @@ ipc_consumer에 보낸다.
 출력하고, 자신의 이름과 자신의 PID를 ipc_producer에 보낸다. 
 - 자신의 이름과 ipc_consumer의 PID를 받은 ipc_producer는 화면에 자신의 PID와
 ipc_consumer의 PID, 이름과 학번을 화면에 출력한다. 
-
 2. ipc_producer와 ipc_consumer의 IPC 방법을 pipe를 사용하여 구현한다. 
